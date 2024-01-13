@@ -20,6 +20,12 @@ const Card = (data) => {
         context.setProductToShow(productDelail)
     } 
 
+    const addProductsToCard = (productData) => {
+        context.setCount(context.count + 1)
+        context.setCardProducts([...context.cardProducts, productData])
+        console.log("product", context.cardProducts)
+    }
+
     return (
         <div 
             className="bg-white cursor-pointer w-56 h-60 rounded-lg"
@@ -30,7 +36,7 @@ const Card = (data) => {
                 <img className="w-full h-full object-cover rounded-lg" src={images[0]} alt={title} />
                 {/* <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">+</div> */}
                 <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                    onClick={() => context.setCount(context.count + 1)}
+                    onClick={() => addProductsToCard(data.data)}
                 >
                     <PlusIcon className="h-6 w-6 text-black" />
                 </button>

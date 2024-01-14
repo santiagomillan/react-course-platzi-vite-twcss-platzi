@@ -7,6 +7,11 @@ import OrderCard from '../OrderCard';
 const CheckoutSideMenu = () => {
     const context = useContext(ShoppingCardContext)
 
+    const handleDelete = (id) => {
+        const filteredProducts = context.cardProducts.filter( product => product.id != id)
+        context.setCardProducts(filteredProducts);
+    }
+
     return(
         <aside 
             className={`${context.isCheckoutSideMenuOpen ? "flex" : "hidden"} chakout-side-menu  flex-col fixed bg-white right-0 border border-black rounded-lg`}
@@ -25,9 +30,11 @@ const CheckoutSideMenu = () => {
                 context.cardProducts.map( product => (
                     <OrderCard 
                         key={product.id}
+                        id={product.id}
                         title={product.title}
                         imageURL={product.images}
                         price={product.price} 
+                        handleDelete={handleDelete}
                     />
                 ))
             }

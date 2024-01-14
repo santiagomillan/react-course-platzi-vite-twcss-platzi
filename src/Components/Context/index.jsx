@@ -10,6 +10,10 @@ export const ShoppingCartProvider = ({children}) => {
     const [productToShow, setProductToShow] = useState({})
     //shoppong card - add products to car
     const [cardProducts, setCardProducts] = useState([])
+    
+    const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
+    const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
+    const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
 
     return(
         <ShoppingCardContext.Provider value={{
@@ -22,6 +26,9 @@ export const ShoppingCartProvider = ({children}) => {
             setProductToShow,
             setCardProducts,
             cardProducts,
+            isCheckoutSideMenuOpen,
+            openCheckoutSideMenu,
+            closeCheckoutSideMenu,
         }}>
             {children}
         </ShoppingCardContext.Provider>

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { useContext } from "react";
-import { ShoppingCardContext } from "../Context";
+import { ShoppingCardContext } from "../../Context";
 import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 
 const Navbar = () => {

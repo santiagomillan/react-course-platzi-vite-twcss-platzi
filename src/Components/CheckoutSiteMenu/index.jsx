@@ -13,6 +13,18 @@ const CheckoutSideMenu = () => {
         context.setCardProducts(filteredProducts);
     }
 
+    const handleCheckout = () => {
+        const orderToAdd = {
+            date: new Date(),
+            products: context.cardProducts,
+            totalProducrs: context.cardProducts.length,
+            totalPrice: totalPrice(context.cardProducts)
+        }
+
+        context.setOrder([...context.order, orderToAdd])
+        context.setCardProducts([])
+    }
+
     return(
         <aside 
             className={`${context.isCheckoutSideMenuOpen ? "flex" : "hidden"} chakout-side-menu  flex-col fixed bg-white right-0 border border-black rounded-lg`}
@@ -26,7 +38,7 @@ const CheckoutSideMenu = () => {
                     />
                 </button>
             </div>
-            <div className='px-6 overflow-y-scroll'>
+            <div className='px-6 overflow-y-scroll flex-1'>
             {
                 context.cardProducts.map( product => (
                     <OrderCard 
@@ -40,12 +52,17 @@ const CheckoutSideMenu = () => {
                 ))
             }
             </div>
-            <div className='px-6 '>
-                <p className='flex justify-between items-center'>
+            <div className='px-6 mb-6'>
+                <p className='flex justify-between items-center mb-2'>
                     <span className='font-light'>Total: </span>
                     <span className='font-medium text-2xl'>${totalPrice(context.cardProducts)}</span>
                 </p>
+                <button 
+                    onClick={() => handleCheckout()}  
+                    className='w-full bg-black py-3 text-white rounded-lg'
+                >Checkout</button>
             </div>
+
             {/* <figure className='p-6'>
                 <img 
                     className='w-full h-full rounded-lg' 

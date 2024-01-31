@@ -9,6 +9,28 @@ function Home() {
 
     const context = useContext(ShoppingCardContext)
 
+    const renderView = () => {
+        if (context.searchByTitle?.length > 0){
+            if (context.filteredItems?.length > 0){
+                return(
+                    context.filteredItems?.map((item, index) => (
+                        <Card data={item} key={index}/>
+                    ))
+                )
+            }else{
+                return(
+                    <div>We dont have anything</div>
+                )
+            }
+        }else{
+            return(
+                context.items?.map((item, index) => (
+                    <Card data={item} key={index}/>
+                    ))
+            )
+        }
+    }
+
     return (
     <Layout>
         <div className="flex items-center justify-center relative w-80 mb-4">
@@ -22,9 +44,7 @@ function Home() {
         />
         <div className="grid gat-4 grid-cols-4 w-full max-w-screen-lg">
             {
-                context.items?.map((item, index) => (
-                    <Card data={item} key={index}/>
-                    ))
+                renderView()
             }
         </div>
         <ProductDelail/>

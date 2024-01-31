@@ -61,7 +61,7 @@ export const ShoppingCartProvider = ({children}) => {
         if(searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY' ,items, searchByTitle, searchByCategory))
         if(searchByTitle && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
         if(searchByCategory && !searchByTitle) setFilteredItems(filterBy('BY_CATEGORY',items, searchByTitle, searchByCategory))
-        if(!searchByCategory && !searchByTitle) setFilteredItems(filterBy('null',items, searchByTitle, searchByCategory))
+        if(!searchByCategory && !searchByTitle) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
     }, [items, searchByTitle, searchByCategory]);
 
     return(
